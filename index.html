@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SIBLINK | 障害があるきょうだいと、生きる</title>
+
+  <!-- SEO -->
+  <meta name="description" content="障害があるきょうだいと生きる「きょうだい児」のためのwebメディア。SIBLINKは、障害があるきょうだいと生きる人が、存在を認められ、分かち合い、前に進める場所です。">
+
+  <!-- OGP -->
+  <meta property="og:title" content="SIBLINK | 障害があるきょうだいと、生きる">
+  <meta property="og:description" content="障害があるきょうだいと生きる「きょうだい児」のためのwebメディア。SIBLINKは、障害があるきょうだいと生きる人が、存在を認められ、分かち合い、前に進める場所です。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://siblink.jp">
+  <meta property="og:image" content="https://siblink.jp/assets/images/ogp.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SIBLINK | 障害があるきょうだいと、生きる">
+  <meta name="twitter:description" content="障害があるきょうだいと生きる「きょうだい児」のためのwebメディア。SIBLINKは、障害があるきょうだいと生きる人が、存在を認められ、分かち合い、前に進める場所です。">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* カラートークン */
+    :root {
+      --color-primary:      #1e2939;
+      --color-primary-dark: #0f172a;
+      --bg-base:            #ffffff;
+      --bg-dark:            #1e2939;
+      --text-primary:       #030712;
+      --text-inverse:       #f9fafb;
+      --text-muted:         rgba(255, 255, 255, 0.7);
+      --text-secondary:     rgba(0, 0, 0, 0.6);
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      color: var(--text-primary);
+      background-color: var(--bg-base);
+    }
+
+    /* Blob canvases — fixed, Hero・Message・About で共有 */
+    #c, #grain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    #grain {
+      opacity: 0.07;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    /* Hero */
+    #hero {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100vh;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-catchcopy {
+      opacity: 0;
+      animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+    }
+
+    .hero-logo {
+      opacity: 0;
+      animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
+    }
+
+    /* Dark overlay（Message・About 共通） */
+    .dark-overlay {
+      background-color: rgba(30, 41, 57, 0.88);
+    }
+
+    /* スクロールフェードイン */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Blob背景（Hero・Message・About で共有） -->
+  <canvas id="c"></canvas>
+  <canvas id="grain"></canvas>
+
+  <!-- Header -->
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white text-center px-4">
+      <p class="hero-catchcopy text-lg md:text-2xl font-light tracking-[0.3em] mb-8">障害があるきょうだいと、生きる</p>
+      <h1 class="hero-logo text-5xl md:text-7xl font-black tracking-[0.15em]">SIBLINK</h1>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section id="message" class="relative z-10">
+    <div class="absolute inset-0 dark-overlay"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-8 py-32 md:py-48 text-center">
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide mb-12">
+        障害のあるきょうだいと、生きる。
+      </p>
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide mb-12">
+        愛しさと、あきらめと<br>
+        使命感に、やるせなさと<br>
+        深いつながりと、深い孤独と
+      </p>
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide mb-12">
+        いりまじった感情が、なだれこむ。
+      </p>
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide mb-12">
+        この感情を<br>
+        打ち明けられる場所は？<br>
+        受け止めてくれる場所は？
+      </p>
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide mb-12">
+        世の中にはさまざまな支援があるけれど、<br>
+        障害があるきょうだいと生きる、わたしたちは、<br>
+        まるで、透明な存在だ。
+      </p>
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide mb-12">
+        SIBLINKは、<br>
+        わたしたちの存在を透明にしない。
+      </p>
+      <p class="fade-in text-white font-light text-base md:text-lg leading-[2.4] tracking-wide">
+        人生のどんな場面でも、<br>
+        一人じゃないと思えるように。
+      </p>
+    </div>
+  </section>
+
+  <!-- News -->
+
+  <!-- About -->
+
+  <!-- Interview -->
+
+  <!-- Footer -->
+
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx    = canvas.getContext('2d');
+    const grain  = document.getElementById('grain');
+    const gctx   = grain.getContext('2d');
+
+    const SPEED = 0.6;
+
+    function resize() {
+      canvas.width  = window.innerWidth  * Math.min(devicePixelRatio, 2);
+      canvas.height = window.innerHeight * Math.min(devicePixelRatio, 2);
+    }
+
+    function buildGrain() {
+      const scale = 0.7;
+      const W = Math.floor(window.innerWidth  * Math.min(devicePixelRatio, 2) * scale);
+      const H = Math.floor(window.innerHeight * Math.min(devicePixelRatio, 2) * scale);
+      grain.width  = W;
+      grain.height = H;
+      grain.style.imageRendering = 'pixelated';
+      const imageData = gctx.createImageData(W, H);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const v = Math.random() > 0.5 ? (180 + (Math.random() * 75) | 0) : 0;
+        data[i] = data[i+1] = data[i+2] = v;
+        data[i+3] = 255;
+      }
+      gctx.putImageData(imageData, 0, 0);
+    }
+
+    resize();
+    buildGrain();
+    window.addEventListener('resize', () => { resize(); buildGrain(); });
+
+    const blobs = [
+      { color: [255,  50, 140], cx: 0.30, cy: 0.42, rx: 0.55, ry: 0.30, ax: 0.18, ay: 0.14, px: 0.0, py: 0.5, a: 0.82 },
+      { color: [255, 140,   0], cx: 0.12, cy: 0.68, rx: 0.44, ry: 0.24, ax: 0.16, ay: 0.20, px: 1.1, py: 1.8, a: 0.88 },
+      { color: [255, 210,   0], cx: 0.78, cy: 0.18, rx: 0.38, ry: 0.20, ax: 0.14, ay: 0.12, px: 3.5, py: 2.2, a: 0.82 },
+      { color: [255, 110,   0], cx: 0.06, cy: 0.16, rx: 0.34, ry: 0.28, ax: 0.12, ay: 0.16, px: 0.5, py: 4.0, a: 0.85 },
+      { color: [ 20, 180, 255], cx: 0.85, cy: 0.72, rx: 0.58, ry: 0.34, ax: 0.16, ay: 0.18, px: 0.8, py: 3.1, a: 0.92 },
+      { color: [  0, 230, 210], cx: 0.50, cy: 0.08, rx: 0.62, ry: 0.24, ax: 0.22, ay: 0.14, px: 1.7, py: 0.3, a: 0.88 },
+      { color: [  0, 220, 190], cx: 0.92, cy: 0.32, rx: 0.34, ry: 0.30, ax: 0.10, ay: 0.20, px: 4.2, py: 2.7, a: 0.85 },
+      { color: [ 30, 160, 255], cx: 0.64, cy: 0.35, rx: 0.36, ry: 0.50, ax: 0.14, ay: 0.22, px: 1.9, py: 3.5, a: 0.88 },
+      { color: [160,  60, 255], cx: 0.18, cy: 0.84, rx: 0.38, ry: 0.28, ax: 0.18, ay: 0.16, px: 2.9, py: 1.4, a: 0.70 },
+      { color: [220,   0, 170], cx: 0.44, cy: 0.90, rx: 0.44, ry: 0.20, ax: 0.20, ay: 0.12, px: 3.3, py: 0.7, a: 0.65 },
+      { color: [ 20, 190, 255], cx: 0.50, cy: 0.50, rx: 0.92, ry: 0.80, ax: 0.05, ay: 0.05, px: 0.2, py: 0.8, a: 0.52 },
+      { color: [255,  60, 150], cx: 0.50, cy: 0.50, rx: 0.88, ry: 0.72, ax: 0.06, ay: 0.04, px: 1.3, py: 2.1, a: 0.38 },
+    ];
+
+    function drawBlob(x, y, rx, ry, color, alpha) {
+      ctx.save();
+      ctx.translate(x, y);
+      const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+      const [r, g, b] = color;
+      grad.addColorStop(0,    `rgba(${r},${g},${b},${alpha})`);
+      grad.addColorStop(0.45, `rgba(${r},${g},${b},${alpha * 0.6})`);
+      grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
+      ctx.scale(rx, ry);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(0, 0, 1, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function draw(t) {
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+      const base = ctx.createLinearGradient(0, 0, W, H);
+      base.addColorStop(0,    '#ff4090');
+      base.addColorStop(0.35, '#ff9800');
+      base.addColorStop(0.65, '#00b4ff');
+      base.addColorStop(1,    '#00dcc0');
+      ctx.fillStyle = base;
+      ctx.fillRect(0, 0, W, H);
+      for (const b of blobs) {
+        const x = (b.cx + Math.sin(t * SPEED + b.px) * b.ax) * W;
+        const y = (b.cy + Math.cos(t * SPEED + b.py) * b.ay) * H;
+        drawBlob(x, y, b.rx * W, b.ry * H, b.color, b.a);
+      }
+    }
+
+    const start = performance.now();
+    function loop() {
+      requestAnimationFrame(loop);
+      draw((performance.now() - start) / 1000);
+    }
+    loop();
+
+    // スクロールフェードイン
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+      fadeObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
