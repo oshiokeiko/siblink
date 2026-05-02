@@ -363,7 +363,7 @@
     <!-- 左カラム: ロゴ（PCではsticky固定） -->
     <div class="relative h-screen flex items-center justify-center md:sticky md:top-0 md:w-1/2">
       <h1 class="hero-logo">
-        <img src="assets/images/logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[320px]">
+        <img src="assets/images/logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[420px]">
       </h1>
       <!-- スクロールインジケーター（SPのみ） -->
       <div class="absolute bottom-8 left-0 right-0 flex justify-center text-white md:hidden">
@@ -377,8 +377,8 @@
     </div>
 
     <!-- 右カラム: メッセージテキスト -->
-    <div class="md:w-1/2">
-      <div class="max-w-lg mx-auto px-8 py-28 md:py-48 text-left tracking-widest font-light text-base md:text-lg leading-[2.4]" style="color: var(--text-primary);">
+    <div class="md:w-1/2 md:pt-[100vh] md:pb-[30vh]">
+      <div class="max-w-lg mx-auto px-8 py-28 md:py-0 text-left tracking-widest font-normal text-base md:text-lg leading-[2.4]" style="color: var(--text-primary);">
         <p class="slide-up mb-12">
           障害のあるきょうだいと、生きる。
         </p>
@@ -618,24 +618,17 @@
       fadeObserver.observe(el);
     });
 
-    // メッセージ: 最初のスクロール後にIntersectionObserverで下からスライドアップ
-    const slideUpEls = [...document.querySelectorAll('.slide-up')];
-
+    // スクロールでテキストをフェードイン
     const slideObserver = new IntersectionObserver((entries) => {
-      let stagger = 0;
-      entries.forEach((entry) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = `${stagger * 0.12}s`;
           entry.target.classList.add('visible');
-          stagger++;
           slideObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
 
-    window.addEventListener('scroll', function onFirstScroll() {
-      slideUpEls.forEach(el => slideObserver.observe(el));
-    }, { passive: true, once: true });
+    document.querySelectorAll('.slide-up').forEach(el => slideObserver.observe(el));
 
     // Header: セクションに応じて文字色切り替え
     const headerEl = document.getElementById('header');
