@@ -54,8 +54,8 @@
       --color-primary-dark: #0f172a;
       --bg-base:            #ffffff;
       --bg-dark:            #1e2939;
-      --text-primary:       #030712;
-      --text-inverse:       #f9fafb;
+      --text-primary:       #0f172a;
+      --text-inverse:       #ffffff;
       --text-muted:         rgba(255, 255, 255, 0.7);
       --text-secondary:     rgba(0, 0, 0, 0.6);
     }
@@ -67,27 +67,7 @@
       background-color: var(--bg-base);
     }
 
-    /* Blob canvases — fixed, Hero・Message・About で共有 */
-    #c, #grain {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    #grain {
-      opacity: 0.07;
-      mix-blend-mode: overlay;
-      pointer-events: none;
-    }
-
-    /* Hero + Message */
-    #hero-message {
-      position: relative;
-      z-index: 10;
-    }
-
+    /* Hero + Message アニメーション */
     @keyframes heroFadeUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -98,7 +78,7 @@
       animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
     }
 
-    /* スクロールフェードイン */
+    /* スクロールフェードイン（JS で .visible を付与） */
     .fade-in {
       opacity: 0;
       transform: translateY(28px);
@@ -111,7 +91,6 @@
       transform: translateY(0);
     }
 
-    /* メッセージ スライドアップ */
     .slide-up {
       opacity: 0;
       transform: translateY(50px);
@@ -124,152 +103,15 @@
       transform: translateY(0);
     }
 
-    /* News */
-    #news {
-      position: relative;
-      z-index: 10;
-      background-color: var(--bg-base);
-    }
-
-    .news-card .news-thumb {
-      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-
-    .news-card .news-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.3s ease;
-    }
-
-    .news-card:hover .news-thumb img {
-      opacity: 0.85;
-    }
-
-    /* About */
-    #about {
-      position: relative;
-      z-index: 10;
-    }
-
-    #about p {
-      letter-spacing: 0.08em;
-    }
-
-    /* Interview */
-    #interview {
-      position: relative;
-      z-index: 10;
-      background-color: var(--bg-base);
-    }
-
-    .interview-btn {
-      display: inline-block;
-      background-color: var(--text-primary);
-      color: var(--text-inverse);
-      border: 1px solid var(--text-primary);
-      padding: 14px 48px;
-      font-size: 0.8125rem;
-      letter-spacing: 0.2em;
-      font-weight: 300;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    .interview-btn:hover {
-      background-color: transparent;
-      color: var(--text-primary);
-    }
-
-    /* Footer */
-    #footer {
-      position: relative;
-      z-index: 10;
-      background-color: var(--color-primary-dark);
-    }
-
-    #footer nav a {
-      color: rgba(249, 250, 251, 0.5);
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      transition: color 0.2s ease;
-    }
-
-    #footer nav a:hover {
-      color: var(--text-inverse);
-    }
-
-    /* Header */
-    #header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: color 0.3s ease;
-    }
-
+    /* Header: JS で切り替える色クラス */
     #header.header-light { color: var(--text-primary); }
     #header.header-dark  { color: var(--text-inverse); }
-
-    .header-logo {
-      text-decoration: none;
-    }
 
     #header.header-dark  .header-logo img { filter: brightness(0) invert(1); }
     #header.header-light .header-logo img { filter: none; }
 
-    .header-nav ul {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .header-nav a {
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 0.2s ease;
-    }
-
-    .header-nav a:hover { opacity: 0.5; }
-
-    /* Hamburger */
-    #hamburger {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      color: inherit;
-    }
-
-    .hamburger-line {
-      width: 22px;
-      height: 1px;
-      background-color: currentColor;
-    }
-
-    /* SP Menu Overlay */
+    /* SP Menu: JS で切り替える開閉状態 */
     #sp-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background-color: var(--color-primary-dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
@@ -279,91 +121,61 @@
       opacity: 1;
       pointer-events: auto;
     }
-
-    #sp-menu-close {
-      position: absolute;
-      top: 24px; right: 32px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-inverse);
-      padding: 8px;
-    }
-
-    #sp-menu nav ul {
-      list-style: none;
-      padding: 0; margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    #sp-menu nav a {
-      color: var(--text-inverse);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 300;
-      letter-spacing: 0.25em;
-      transition: opacity 0.2s ease;
-    }
-
-    #sp-menu nav a:hover { opacity: 0.5; }
   </style>
 </head>
 <body>
 
   <!-- Blob背景（Hero・Message・About で共有） -->
-  <canvas id="c"></canvas>
-  <canvas id="grain"></canvas>
+  <canvas id="c" class="fixed inset-0 w-full h-full z-0"></canvas>
+  <canvas id="grain" class="fixed inset-0 w-full h-full z-0 opacity-[0.07] mix-blend-overlay pointer-events-none"></canvas>
 
   <!-- SP Menu Overlay -->
-  <div id="sp-menu" role="dialog" aria-modal="true">
-    <button id="sp-menu-close" aria-label="メニューを閉じる">
+  <div id="sp-menu" class="fixed inset-0 z-[200] bg-[var(--color-primary-dark)] flex flex-col items-center justify-center" role="dialog" aria-modal="true">
+    <button id="sp-menu-close" class="absolute top-6 right-8 bg-transparent border-0 cursor-pointer text-[var(--text-inverse)] p-2" aria-label="メニューを閉じる">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <line x1="4" y1="4" x2="20" y2="20"/>
         <line x1="20" y1="4" x2="4" y2="20"/>
       </svg>
     </button>
     <nav>
-      <ul>
-        <li><a href="#news">記事</a></li>
-        <li><a href="#about">SIBLINKについて</a></li>
-        <li><a href="#interview">声を投稿する</a></li>
-        <li><a href="#">お問い合わせ</a></li>
+      <ul class="list-none p-0 m-0 flex flex-col items-center gap-10">
+        <li><a href="#news" class="text-[var(--text-inverse)] no-underline text-sm font-light tracking-[0.25em] transition-opacity duration-200 hover:opacity-50">記事</a></li>
+        <li><a href="#about" class="text-[var(--text-inverse)] no-underline text-sm font-light tracking-[0.25em] transition-opacity duration-200 hover:opacity-50">SIBLINKについて</a></li>
+        <li><a href="#interview" class="text-[var(--text-inverse)] no-underline text-sm font-light tracking-[0.25em] transition-opacity duration-200 hover:opacity-50">声を投稿する</a></li>
+        <li><a href="#" class="text-[var(--text-inverse)] no-underline text-sm font-light tracking-[0.25em] transition-opacity duration-200 hover:opacity-50">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
 
   <!-- Header -->
-  <header id="header" class="header-dark">
-    <a href="#" class="header-logo">
-      <img src="assets/images/logo.svg" alt="SIBLINK" style="height: 50px; width: auto; transition: filter 0.3s ease;">
+  <header id="header" class="header-dark fixed top-0 left-0 right-0 z-[100] px-12 py-8 flex items-center justify-between transition-colors duration-300">
+    <a href="#" class="header-logo no-underline">
+      <img src="/assets/images/header_logo.svg" alt="SIBLINK" style="height: 24px; width: auto; transition: filter 0.3s ease;">
     </a>
 
-    <nav class="header-nav hidden md:block">
-      <ul>
-        <li><a href="#news">記事</a></li>
-        <li><a href="#about">SIBLINKについて</a></li>
-        <li><a href="#interview">声を投稿する</a></li>
-        <li><a href="#">お問い合わせ</a></li>
+    <nav class="hidden md:block">
+      <ul class="flex gap-10 list-none p-0 m-0">
+        <li><a href="#news" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">記事</a></li>
+        <li><a href="#about" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">SIBLINKについて</a></li>
+        <li><a href="#interview" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">声を投稿する</a></li>
+        <li><a href="#" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">お問い合わせ</a></li>
       </ul>
     </nav>
 
-    <button id="hamburger" class="md:hidden" aria-label="メニューを開く">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
+    <button id="hamburger" class="md:hidden flex flex-col gap-[6px] bg-transparent border-0 cursor-pointer p-1 text-inherit" aria-label="メニューを開く">
+      <span class="w-[22px] h-px bg-current"></span>
+      <span class="w-[22px] h-px bg-current"></span>
+      <span class="w-[22px] h-px bg-current"></span>
     </button>
   </header>
 
   <!-- Hero + Message -->
-  <section id="hero-message" class="flex flex-col md:flex-row md:items-start">
+  <section id="hero-message" class="relative z-10 flex flex-col md:flex-row md:items-start">
 
     <!-- 左カラム: ロゴ（PCではsticky固定） -->
     <div class="relative h-screen flex items-center justify-center md:sticky md:top-0 md:w-1/2">
       <h1 class="hero-logo">
-        <img src="assets/images/logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[420px]">
+        <img src="/assets/images/hero_logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[480px]">
       </h1>
       <!-- スクロールインジケーター（SPのみ） -->
       <div class="absolute bottom-8 left-0 right-0 flex justify-center text-white md:hidden">
@@ -378,33 +190,33 @@
 
     <!-- 右カラム: メッセージテキスト -->
     <div class="md:w-1/2 md:pt-[100vh] md:pb-[30vh]">
-      <div class="max-w-lg mx-auto px-8 py-28 md:py-0 text-left tracking-widest font-normal text-base md:text-lg leading-[2.4]" style="color: var(--text-primary);">
-        <p class="slide-up mb-12">
+      <div class="max-w-xl mx-auto px-8 py-28 md:py-0 text-left tracking-[0.2em] font-normal text-base md:text-lg" style="color: var(--text-primary);">
+        <p class="slide-up mb-12 leading-[2]">
           障害のあるきょうだいと、生きる。
         </p>
-        <p class="slide-up mb-12 tracking-widest">
+        <p class="slide-up mb-12 leading-[2]">
           愛しさと、あきらめと<br>
           使命感と、やるせなさと<br>
           深いつながりと、深い孤独と
         </p>
-        <p class="slide-up mb-12 tracking-widest">
+        <p class="slide-up mb-12 leading-[2]">
           いりまじった感情が、なだれこむ。
         </p>
-        <p class="slide-up mb-12 tracking-widest">
+        <p class="slide-up mb-12 leading-[2]">
           この感情を<br>
           打ち明けられる場所は？<br>
           受け止めてくれる場所は？
         </p>
-        <p class="slide-up mb-12 tracking-widest">
+        <p class="slide-up mb-12 leading-[2]">
           世の中にはさまざまな支援があるけれど、<br>
           障害があるきょうだいと生きるわたしたちは、<br>
           まるで、透明な存在だ。
         </p>
-        <p class="slide-up mb-12 tracking-widest">
+        <p class="slide-up mb-12 leading-[2]">
           SIBLINKは、<br>
           わたしたちの存在を透明にしない。
         </p>
-        <p class="slide-up tracking-widest">
+        <p class="slide-up leading-[3]">
           人生のどんな場面でも、<br>
           一人じゃないと思えるように。
         </p>
@@ -414,35 +226,35 @@
   </section>
 
   <!-- News -->
-  <section id="news" class="px-8 py-20 md:py-28">
+  <section id="news" class="relative z-10 bg-white px-8 py-20 md:py-28">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-xs tracking-[0.3em] text-[var(--text-secondary)] mb-10 md:mb-14">NEWS</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
 
         <a class="news-card group block" href="#">
-          <div class="news-thumb mb-4">
-            <img src="assets/images/news-01.jpg" alt="「家族だから」を壊したい">
+          <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
+            <img src="assets/images/news-01.jpg" alt="「家族だから」を壊したい" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
           <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">「家族だから」を壊したい</h3>
         </a>
 
         <a class="news-card group block" href="#">
-          <div class="news-thumb mb-4">
-            <img src="assets/images/news-02.jpg" alt="「お姉さんは自分の生活を大切にしてください」の言葉に傷ついた一父親の息子との向き合い方">
+          <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
+            <img src="assets/images/news-02.jpg" alt="「お姉さんは自分の生活を大切にしてください」の言葉に傷ついた一父親の息子との向き合い方" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
           <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">「お姉さんは自分の生活を大切にしてください」の言葉に傷ついた一父親の息子との向き合い方</h3>
         </a>
 
         <a class="news-card group block" href="#">
-          <div class="news-thumb mb-4">
-            <img src="assets/images/news-03.jpg" alt="きょうだい児のつらさから考える家族支援">
+          <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
+            <img src="assets/images/news-03.jpg" alt="きょうだい児のつらさから考える家族支援" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
           <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">きょうだい児のつらさから考える家族支援</h3>
         </a>
 
         <a class="news-card group block" href="#">
-          <div class="news-thumb mb-4">
-            <img src="assets/images/news-04.jpg" alt="きょうだいとして生きること——ある当事者の語り">
+          <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
+            <img src="assets/images/news-04.jpg" alt="きょうだいとして生きること——ある当事者の語り" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
           <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">きょうだいとして生きること——ある当事者の語り</h3>
         </a>
@@ -452,24 +264,28 @@
   </section>
 
   <!-- About -->
-  <section id="about">
-    <div class="absolute inset-0 dark-overlay"></div>
+  <section id="about" class="relative z-10">
     <div class="relative z-10 max-w-5xl mx-auto px-8 py-28 md:py-36">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-24 items-center">
 
         <!-- ロゴ -->
         <div class="fade-in">
-          <p class="text-5xl md:text-6xl font-black tracking-[0.15em] text-white leading-tight">SIBLINK</p>
+          <img src="/assets/images/hero_logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[280px]">
         </div>
 
-        <!-- 説明テキスト -->
-        <div class="fade-in">
-          <p class="text-white font-light text-sm md:text-base leading-[2.2]">
+        <!-- c -->
+        <div>
+          <p class="slide-up mb-12 leading-[2] font-normal tracking-widest">
             SIBLINKは、障害があるきょうだいと生きる「きょうだい」をテーマにしています。<br>
-            「きょうだい」は、子どもの頃から大人になるまで、人生のさまざまな場面で、きょうだいならではの葛藤を抱えるシーンがあります。<br>
-            近年、少しずつ認知が広まってきました。<br>
-            障害のある子と生きる「きょうだい」への支援はまだまだ整っていないのが現状です。<br>
-            SIBLINKは、「きょうだい」が健康に生きながらも、自分から前に進める場所をつくりたいと考えています。
+            <br>
+            幼少期、思春期、結婚や出産、親亡き後。<br>
+            <br>
+            「きょうだい」は、子どもの頃から大人になるまで、人生のさまざまな場面で、きょうだいならではの葛藤を抱えるシーンが多くあります。<br>
+            <br>
+            近年、少しずつ認知が広まってきましたが、<br>
+            障害があるきょうだいと生きる「きょうだい」への支援はまだまだ整っていないのが現状です。<br>
+            
+            SIBLINKは、「きょうだい」が複雑さを生きながらも、存在を認められ、分かち合い、前に進める場所をつくりたいと考えています。
           </p>
         </div>
 
@@ -478,39 +294,38 @@
   </section>
 
   <!-- Interview -->
-  <section id="interview" class="px-8 py-28 md:py-40 text-center">
-    <div class="max-w-lg mx-auto">
-      <h2 class="fade-in text-xl md:text-2xl font-light tracking-[0.12em] text-[var(--text-primary)] mb-8">
+  <section id="interview" class="relative z-10 bg-white px-8 py-28 md:py-40 text-center">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="fade-in text-xl md:text-2xl font-normal tracking-[0.12em] text-[var(--text-primary)] mb-8">
         あなたの気持ち、届けてみませんか？
       </h2>
-      <p class="fade-in text-sm font-light leading-[2.0] text-[var(--text-secondary)] mb-14" style="letter-spacing: 0.06em;">
-        きょうだいとして過ごしてきたこと。ほかの「きょうだい」に向けてのメッセージを聞かせてください。あなたの言葉が、同じ気持ちを抱えながらいるどこかの人の助けになります。
+      <p class="slide-up mb-12 leading-[2] font-normal tracking-widest">
+        きょうだい児として感じてきたこと、<br>
+        ほかのきょうだい児に向けてのメッセージを聞かせてください。<br>
+        あなたの言葉が、同じ気持ちを抱えながらひとりでいる誰かの、<br>
+        救いになります。
       </p>
       <div class="fade-in">
-        <a href="#" class="interview-btn">気持ちを投稿する</a>
+        <a href="#_" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">気持ちを投稿する
+        </a>  
+</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="footer" class="px-8 py-16 md:py-20">
-    <div class="max-w-5xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 mb-12">
-
-        <p class="text-xl font-black tracking-[0.15em] text-white">SIBLINK</p>
-
-        <nav>
-          <ul class="flex flex-col md:flex-row gap-6 md:gap-10">
-            <li><a href="#">記事</a></li>
-            <li><a href="#">SIBLINKについて</a></li>
-            <li><a href="#">声を投稿する</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-          </ul>
-        </nav>
-
-      </div>
-      <p class="text-xs tracking-[0.1em]" style="color: rgba(249,250,251,0.25);">© 2025 SIBLINK</p>
-    </div>
+  <footer id="footer" class="relative z-10 bg-zinc-100 px-12 py-20 flex items-center justify-between text-[var(--text-primary)]">
+    <a href="#" class="no-underline">
+      <img src="/assets/images/header_logo.svg" alt="SIBLINK" style="height: 24px; width: auto;">
+    </a>
+    <nav>
+      <ul class="flex gap-10 list-none p-0 m-0 text-sm font-normal tracking-[0.15em] no-underline">
+        <li><a href="#news" class="transition-opacity duration-200 hover:opacity-50">記事</a></li>
+        <li><a href="#about" class="transition-opacity duration-200 hover:opacity-50">SIBLINKについて</a></li>
+        <li><a href="#interview" class="transition-opacity duration-200 hover:opacity-50">声を投稿する</a></li>
+        <li><a href="#" class="transition-opacity duration-200 hover:opacity-50">お問い合わせ</a></li>
+      </ul>
+    </nav>
   </footer>
 
   <script>
