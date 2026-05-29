@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SIBLINK | 障害があるきょうだいと、生きる</title>
+  <title>SIBLINK | きょうだい児が、つながる。わかちあう。</title>
 
   <!-- SEO -->
-  <meta name="description" content="障害があるきょうだいと生きる「きょうだい児」のためのwebメディア。SIBLINKは、障害があるきょうだいと生きる人が、存在を認められ、分かち合い、前に進める場所です。">
+  <meta name="description" content="障害があるきょうだいと生きる「きょうだい児」のためのwebメディア。SIBLINKは、障害があるきょうだいと生きる人が、存在を認められ、分かち合い、前に進める場所を作ります。">
 
   <!-- OGP -->
   <meta property="og:title" content="SIBLINK | 障害があるきょうだいと、生きる">
@@ -25,6 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Gen Interface JP -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gen-interface-jp@0.5.0/cdn/400.css">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -47,87 +51,13 @@
     }
   </script>
 
-  <style>
-    /* カラートークン */
-    :root {
-      --color-primary:      #1e2939;
-      --color-primary-dark: #0f172a;
-      --bg-base:            #ffffff;
-      --bg-dark:            #1e2939;
-      --text-primary:       #0f172a;
-      --text-inverse:       #ffffff;
-      --text-muted:         rgba(255, 255, 255, 0.7);
-      --text-secondary:     rgba(0, 0, 0, 0.6);
-    }
-
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 300;
-      color: var(--text-primary);
-      background-color: var(--bg-base);
-    }
-
-    /* Hero + Message アニメーション */
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-logo {
-      opacity: 0;
-      animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
-    }
-
-    /* スクロールフェードイン（JS で .visible を付与） */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .slide-up {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .slide-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Header: JS で切り替える色クラス */
-    #header.header-light { color: var(--text-primary); }
-    #header.header-dark  { color: var(--text-inverse); }
-
-    #header.header-dark  .header-logo img { filter: brightness(0) invert(1); }
-    #header.header-light .header-logo img { filter: none; }
-
-    /* SP Menu: JS で切り替える開閉状態 */
-    #sp-menu {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-    #sp-menu.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Blob背景（Hero・Message・About で共有） -->
   <canvas id="c" class="fixed inset-0 w-full h-full z-0"></canvas>
-  <canvas id="grain" class="fixed inset-0 w-full h-full z-0 opacity-[0.07] mix-blend-overlay pointer-events-none"></canvas>
+  <canvas id="grain" class="fixed inset-0 w-full h-full z-0 opacity-[0.1] mix-blend-screen pointer-events-none"></canvas>
 
   <!-- SP Menu Overlay -->
   <div id="sp-menu" class="fixed inset-0 z-[200] bg-[var(--color-primary-dark)] flex flex-col items-center justify-center" role="dialog" aria-modal="true">
@@ -173,9 +103,9 @@
   <section id="hero-message" class="relative z-10 flex flex-col md:flex-row md:items-start">
 
     <!-- 左カラム: ロゴ（PCではsticky固定） -->
-    <div class="relative h-screen flex items-center justify-center md:sticky md:top-0 md:w-1/2">
+    <div class="relative h-screen flex flex-col items-center justify-center md:sticky md:top-0 md:w-1/2">
       <h1 class="hero-logo">
-        <img src="/assets/images/hero_logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[480px]">
+        <img src="/assets/images/message.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[500px]">
       </h1>
       <!-- スクロールインジケーター（SPのみ） -->
       <div class="absolute bottom-8 left-0 right-0 flex justify-center text-white md:hidden">
@@ -190,9 +120,9 @@
 
     <!-- 右カラム: メッセージテキスト -->
     <div class="md:w-1/2 md:pt-[100vh] md:pb-[30vh]">
-      <div class="max-w-xl mx-auto px-8 py-28 md:py-0 text-left tracking-[0.2em] font-normal text-base md:text-lg" style="color: var(--text-primary);">
+      <div class="max-w-xl ml-0 mr-auto px-8 py-28 md:py-0 text-left font-bold text-base md:text-3xl text-white/90">
         <p class="slide-up mb-12 leading-[2]">
-          障害のあるきょうだいと、生きる。
+          障害があるきょうだいと、生きる。
         </p>
         <p class="slide-up mb-12 leading-[2]">
           愛しさと、あきらめと<br>
@@ -208,15 +138,16 @@
           受け止めてくれる場所は？
         </p>
         <p class="slide-up mb-12 leading-[2]">
-          世の中にはさまざまな支援があるけれど、<br>
-          障害があるきょうだいと生きるわたしたちは、<br>
+          支援があふれる世の中で、<br>
+          障害があるきょうだいと生きる<br>
+          わたしたち「きょうだい児」は、<br>
           まるで、透明な存在だ。
         </p>
         <p class="slide-up mb-12 leading-[2]">
           SIBLINKは、<br>
           わたしたちの存在を透明にしない。
         </p>
-        <p class="slide-up leading-[3]">
+        <p class="slide-up leading-[2]">
           人生のどんな場面でも、<br>
           一人じゃないと思えるように。
         </p>
@@ -296,17 +227,18 @@
   <!-- Interview -->
   <section id="interview" class="relative z-10 bg-white px-8 py-28 md:py-40 text-center">
     <div class="max-w-5xl mx-auto">
-      <h2 class="fade-in text-xl md:text-2xl font-normal tracking-[0.12em] text-[var(--text-primary)] mb-8">
-        あなたの気持ち、届けてみませんか？
+      <img src="/assets/images/yourstory.svg" alt="">
+      <h2 class="fade-in text-xl md:text-6xl font-bold text-[var(--text-primary)] mb-8 leading-[4]">
+        あなたの経験を、<br>
+        教えてください。
       </h2>
-      <p class="slide-up mb-12 leading-[2] font-normal tracking-widest">
-        きょうだい児として感じてきたこと、<br>
-        ほかのきょうだい児に向けてのメッセージを聞かせてください。<br>
-        あなたの言葉が、同じ気持ちを抱えながらひとりでいる誰かの、<br>
-        救いになります。
+      <p class="slide-up text-xl mb-12 leading-[2] font-bold">
+        きょうだい児として感じてきたこと、気軽に匿名で教えてください。<br>
+        あなたの声が、次のきょうだい児の一歩になります。
+
       </p>
       <div class="fade-in">
-        <a href="#_" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">気持ちを投稿する
+        <a href="#_" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">声を届ける
         </a>  
 </a>
       </div>
@@ -334,17 +266,19 @@
     const grain  = document.getElementById('grain');
     const gctx   = grain.getContext('2d');
 
-    const SPEED = 0.6;
+    const SPEED = 1.4;
 
     function resize() {
-      canvas.width  = window.innerWidth  * Math.min(devicePixelRatio, 2);
-      canvas.height = window.innerHeight * Math.min(devicePixelRatio, 2);
+      const dpr = Math.min(devicePixelRatio, 2);
+      canvas.width  = window.innerWidth  * dpr;
+      canvas.height = window.innerHeight * dpr;
     }
 
     function buildGrain() {
-      const scale = 0.7;
-      const W = Math.floor(window.innerWidth  * Math.min(devicePixelRatio, 2) * scale);
-      const H = Math.floor(window.innerHeight * Math.min(devicePixelRatio, 2) * scale);
+      const scale = 2.0;
+      const dpr = Math.min(devicePixelRatio, 2);
+      const W = Math.floor(window.innerWidth  * dpr * scale);
+      const H = Math.floor(window.innerHeight * dpr * scale);
       grain.width  = W;
       grain.height = H;
       grain.style.imageRendering = 'pixelated';
@@ -362,19 +296,30 @@
     buildGrain();
     window.addEventListener('resize', () => { resize(); buildGrain(); });
 
+    function saturate(r, g, b, s) {
+      const l = (Math.max(r, g, b) + Math.min(r, g, b)) / 2;
+      return [
+        Math.max(0, Math.min(255, Math.round(l + (r - l) * s))),
+        Math.max(0, Math.min(255, Math.round(l + (g - l) * s))),
+        Math.max(0, Math.min(255, Math.round(l + (b - l) * s)))
+      ];
+    }
+
+    const S = 4.5;
+
     const blobs = [
-      { color: [255,  50, 140], cx: 0.30, cy: 0.42, rx: 0.55, ry: 0.30, ax: 0.18, ay: 0.14, px: 0.0, py: 0.5, a: 0.82 },
-      { color: [255, 140,   0], cx: 0.12, cy: 0.68, rx: 0.44, ry: 0.24, ax: 0.16, ay: 0.20, px: 1.1, py: 1.8, a: 0.88 },
-      { color: [255, 210,   0], cx: 0.78, cy: 0.18, rx: 0.38, ry: 0.20, ax: 0.14, ay: 0.12, px: 3.5, py: 2.2, a: 0.82 },
-      { color: [255, 110,   0], cx: 0.06, cy: 0.16, rx: 0.34, ry: 0.28, ax: 0.12, ay: 0.16, px: 0.5, py: 4.0, a: 0.85 },
-      { color: [ 20, 180, 255], cx: 0.85, cy: 0.72, rx: 0.58, ry: 0.34, ax: 0.16, ay: 0.18, px: 0.8, py: 3.1, a: 0.92 },
-      { color: [  0, 230, 210], cx: 0.50, cy: 0.08, rx: 0.62, ry: 0.24, ax: 0.22, ay: 0.14, px: 1.7, py: 0.3, a: 0.88 },
-      { color: [  0, 220, 190], cx: 0.92, cy: 0.32, rx: 0.34, ry: 0.30, ax: 0.10, ay: 0.20, px: 4.2, py: 2.7, a: 0.85 },
-      { color: [ 30, 160, 255], cx: 0.64, cy: 0.35, rx: 0.36, ry: 0.50, ax: 0.14, ay: 0.22, px: 1.9, py: 3.5, a: 0.88 },
-      { color: [160,  60, 255], cx: 0.18, cy: 0.84, rx: 0.38, ry: 0.28, ax: 0.18, ay: 0.16, px: 2.9, py: 1.4, a: 0.70 },
-      { color: [220,   0, 170], cx: 0.44, cy: 0.90, rx: 0.44, ry: 0.20, ax: 0.20, ay: 0.12, px: 3.3, py: 0.7, a: 0.65 },
-      { color: [ 20, 190, 255], cx: 0.50, cy: 0.50, rx: 0.92, ry: 0.80, ax: 0.05, ay: 0.05, px: 0.2, py: 0.8, a: 0.52 },
-      { color: [255,  60, 150], cx: 0.50, cy: 0.50, rx: 0.88, ry: 0.72, ax: 0.06, ay: 0.04, px: 1.3, py: 2.1, a: 0.38 },
+      { color: saturate(255,  50, 140, S), cx: 0.30, cy: 0.42, rx: 0.55, ry: 0.30, ax: 0.18, ay: 0.14, px: 0.0, py: 0.5, a: 0.82 },
+      { color: saturate(255, 140,   0, S), cx: 0.12, cy: 0.68, rx: 0.44, ry: 0.24, ax: 0.16, ay: 0.20, px: 1.1, py: 1.8, a: 0.88 },
+      { color: saturate(255, 210,   0, S), cx: 0.78, cy: 0.18, rx: 0.38, ry: 0.20, ax: 0.14, ay: 0.12, px: 3.5, py: 2.2, a: 0.82 },
+      { color: saturate(255, 110,   0, S), cx: 0.06, cy: 0.16, rx: 0.34, ry: 0.28, ax: 0.12, ay: 0.16, px: 0.5, py: 4.0, a: 0.85 },
+      { color: saturate( 20, 180, 255, S), cx: 0.85, cy: 0.72, rx: 0.58, ry: 0.34, ax: 0.16, ay: 0.18, px: 0.8, py: 3.1, a: 0.92 },
+      { color: saturate(  0, 230, 210, S), cx: 0.50, cy: 0.08, rx: 0.62, ry: 0.24, ax: 0.22, ay: 0.14, px: 1.7, py: 0.3, a: 0.88 },
+      { color: saturate(  0, 220, 190, S), cx: 0.92, cy: 0.32, rx: 0.34, ry: 0.30, ax: 0.10, ay: 0.20, px: 4.2, py: 2.7, a: 0.85 },
+      { color: saturate( 30, 160, 255, S), cx: 0.64, cy: 0.35, rx: 0.36, ry: 0.50, ax: 0.14, ay: 0.22, px: 1.9, py: 3.5, a: 0.88 },
+      { color: saturate(160,  60, 255, S), cx: 0.18, cy: 0.84, rx: 0.38, ry: 0.28, ax: 0.18, ay: 0.16, px: 2.9, py: 1.4, a: 0.70 },
+      { color: saturate(220,   0, 170, S), cx: 0.44, cy: 0.90, rx: 0.44, ry: 0.20, ax: 0.20, ay: 0.12, px: 3.3, py: 0.7, a: 0.65 },
+      { color: saturate( 20, 190, 255, S), cx: 0.50, cy: 0.50, rx: 0.92, ry: 0.80, ax: 0.05, ay: 0.05, px: 0.2, py: 0.8, a: 0.52 },
+      { color: saturate(255,  60, 150, S), cx: 0.50, cy: 0.50, rx: 0.88, ry: 0.72, ax: 0.06, ay: 0.04, px: 1.3, py: 2.1, a: 0.38 },
     ];
 
     function drawBlob(x, y, rx, ry, color, alpha) {
@@ -398,10 +343,10 @@
       const H = canvas.height;
       ctx.clearRect(0, 0, W, H);
       const base = ctx.createLinearGradient(0, 0, W, H);
-      base.addColorStop(0,    '#ff4090');
-      base.addColorStop(0.35, '#ff9800');
-      base.addColorStop(0.65, '#00b4ff');
-      base.addColorStop(1,    '#00dcc0');
+      base.addColorStop(0,    '#ff0077');
+      base.addColorStop(0.35, '#ff8800');
+      base.addColorStop(0.65, '#0099ff');
+      base.addColorStop(1,    '#00ffcc');
       ctx.fillStyle = base;
       ctx.fillRect(0, 0, W, H);
       for (const b of blobs) {
