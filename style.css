@@ -75,3 +75,16 @@ body {
 #hero-message h1 {
   line-height: 1.5;
 }
+
+#interview h2 {
+  line-height: 1.2;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #FF6023 0%, #FB3161 25%, #867FF9 47%, #4496F2 70%, #01C8BF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  padding-bottom: 0.15em;
+}
