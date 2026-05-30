@@ -1,0 +1,25 @@
+{
+  "name": "siblink",
+  "version": "1.0.0",
+  "description": "障害があるきょうだいと、生きる",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oshiokeiko/siblink.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/oshiokeiko/siblink/issues"
+  },
+  "homepage": "https://github.com/oshiokeiko/siblink#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
