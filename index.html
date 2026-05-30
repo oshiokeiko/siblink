@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SIBLINK | きょうだい児が、つながる。わかちあう。</title>
+  <title>siblink | きょうだい児が、つながる。わかちあう。</title>
 
   <!-- SEO -->
   <meta name="description" content="障害があるきょうだいと生きる「きょうだい児」のためのwebメディア。SIBLINKは、障害があるきょうだいと生きる人が、存在を認められ、分かち合い、前に進める場所を作ります。">
@@ -79,18 +79,27 @@
     </nav>
   </div>
 
-  <!-- Header -->
+  <!----------------
+  Header
+  ----------------->
   <header id="header" class="header-dark fixed top-0 left-0 right-0 z-[100] px-12 py-8 flex items-center justify-between transition-colors duration-300">
     <a href="#" class="header-logo no-underline">
-      <img src="/assets/images/header_logo.svg" alt="SIBLINK" style="height: 24px; width: auto; transition: filter 0.3s ease;">
+      <img src="/assets/images/siblink.svg" alt="SIBLINK" style="height: 32px; width: auto; transition: filter 0.3s ease;">
     </a>
 
     <nav class="hidden md:block">
       <ul class="flex gap-10 list-none p-0 m-0">
-        <li><a href="#news" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">記事</a></li>
-        <li><a href="#about" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">SIBLINKについて</a></li>
-        <li><a href="#interview" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">声を投稿する</a></li>
-        <li><a href="#" class="text-sm font-normal tracking-[0.15em] no-underline text-inherit transition-opacity duration-200 hover:opacity-50">お問い合わせ</a></li>
+        <li>
+          <a href="#news" class="text-base font-lg no-underline text-inherit transition-opacity duration-200 hover:opacity-50">記事
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="text-base font-normal no-underline text-inherit transition-opacity duration-200 hover:opacity-50">siblinkについて
+          </a>
+        </li>
+        <li>
+          <a href="#interview" class="text-base font-normal no-underline text-inherit transition-opacity duration-200 hover:opacity-50">アンケートに答える</a>
+        </li>
       </ul>
     </nav>
 
@@ -108,18 +117,12 @@
 
     <!-- 左カラム: ロゴ（PCではsticky固定） -->
     <div class="relative h-screen flex flex-col items-center justify-center md:sticky md:top-0 md:w-1/2">
-      <h1 class="hero-logo">
-        <img src="/assets/images/message.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[500px]">
+      <h1 class="text-white/90 text-5xl">
+        きょうだい児が<br>
+        つながる。<br>
+        わかちあう。
+        <img src="/assets/images/siblink_white.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[400px] mt-8">
       </h1>
-      <!-- スクロールインジケーター（SPのみ） -->
-      <div class="absolute bottom-8 left-0 right-0 flex justify-center text-white md:hidden">
-        <div class="flex flex-col items-center gap-3">
-          <span class="text-[11px] tracking-[0.15em] text-gray-400 uppercase">scroll</span>
-          <div class="h-[60px] flex items-start">
-            <div class="w-px bg-current animate-stretch"></div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- 右カラム: メッセージテキスト -->
@@ -142,12 +145,11 @@
         </p>
         <p class="slide-up mb-12 leading-[2]">
           支援があふれる世の中で、<br>
-          ケアが必要なきょうだいと生きる<br>
           わたしたち「きょうだい児」は、<br>
           透明な存在だ。
         </p>
         <p class="slide-up mb-12 leading-[2]">
-          SIBLINKは、<br>
+          siblinkは、<br>
           わたしたちの存在を透明にしない。
         </p>
         <p class="slide-up leading-[2]">
@@ -159,67 +161,62 @@
 
   </section>
 
-  <!-- News -->
-  <section id="news" class="relative z-10 bg-white px-8 py-20 md:py-28">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-xs tracking-[0.3em] text-[var(--text-secondary)] mb-10 md:mb-14">NEWS</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-
-        <a class="news-card group block" href="#">
-          <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
-            <img src="assets/images/news-01.jpg" alt="「家族だから」を壊したい" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
-          </div>
-          <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">「家族だから」を壊したい</h3>
-        </a>
-
-        <a class="news-card group block" href="#">
+  <!--------------------
+  News
+  --------------------->
+  <section id="news" class="relative z-10 bg-white px-32 py-20 md:py-28">
+    <div class="text-center">
+      <h2 class="text-4xl font-bold text-gradient">news</h2>
+      <p class="text-sm mb-12 text-gray-600 ">最新記事一覧</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
+        <a class="news-card group block [&:only-child]:col-start-2" href="#">
           <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
             <img src="assets/images/news-02.jpg" alt="「お姉さんは自分の生活を大切にしてください」の言葉に傷ついた一父親の息子との向き合い方" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
-          <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">「お姉さんは自分の生活を大切にしてください」の言葉に傷ついた一父親の息子との向き合い方</h3>
+          <h3 class="text-lg font-normal leading-relaxed text-gray-800 group-hover:text-[var(--text-secondary)] transition-colors duration-200">「お姉さんは自分の生活を大切にしてください」の言葉に傷ついた一父親の息子との向き合い方</h3>
         </a>
 
-        <a class="news-card group block" href="#">
+        <!-- <a class="news-card group block" href="#">
           <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
-            <img src="assets/images/news-03.jpg" alt="きょうだい児のつらさから考える家族支援" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
+            <img src="assets/images/" alt="" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
-          <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">きょうだい児のつらさから考える家族支援</h3>
-        </a>
+          <h3 class="text-lg font-normal leading-relaxed text-gray-800 group-hover:text-[var(--text-secondary)] transition-colors duration-200">きょうだい児のつらさから考える家族支援</h3>
+        </a> -->
 
-        <a class="news-card group block" href="#">
+        <!-- <a class="news-card group block" href="#">
           <div class="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 aspect-video overflow-hidden rounded-2xl">
-            <img src="assets/images/news-04.jpg" alt="きょうだいとして生きること——ある当事者の語り" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
+            <img src="assets/images/" alt="" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-[0.85]">
           </div>
-          <h3 class="text-sm font-normal leading-relaxed text-[var(--text-primary)] group-hover:text-[var(--text-secondary)] transition-colors duration-200">きょうだいとして生きること——ある当事者の語り</h3>
-        </a>
+          <h3 class="text-lg font-normal leading-relaxed text-gray-800 group-hover:text-[var(--text-secondary)] transition-colors duration-200">きょうだいとして生きること——ある当事者の語り</h3>
+        </a> -->
 
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="relative z-10">
+  <section id="about" class="relative z-10 bg-slate-100">
     <div class="relative z-10 max-w-5xl mx-auto px-8 py-28 md:py-36">
       <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-24 items-center">
 
         <!-- ロゴ -->
         <div class="fade-in">
-          <img src="/assets/images/hero_logo.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[280px]">
+          <img src="/assets/images/siblink.svg" alt="障害があるきょうだいと、生きる SIBLINK" class="w-[240px] md:w-[280px]">
         </div>
 
         <!-- c -->
         <div>
-          <p class="slide-up mb-12 leading-[2] font-normal tracking-widest">
-            SIBLINKは、障害があるきょうだいと生きる「きょうだい」をテーマにしています。<br>
+          <p class="slide-up mb-12 leading-[2] text-xl font-medium">
+            「きょうだい児」とは、障害や難病をもつ兄弟姉妹をもつ<br>
+            きょうだいのことを言います。<br>
             <br>
-            幼少期、思春期、結婚や出産、親亡き後。<br>
-            <br>
-            「きょうだい」は、子どもの頃から大人になるまで、人生のさまざまな場面で、きょうだいならではの葛藤を抱えるシーンが多くあります。<br>
+            きょうだい児は、幼少期、思春期、結婚や出産、親亡き後、<br>
+            人生のさまざまな場面で、きょうだいならではの葛藤を抱えるシーンが多くあります。<br>
             <br>
             近年、少しずつ認知が広まってきましたが、<br>
-            障害があるきょうだいと生きる「きょうだい」への支援はまだまだ整っていないのが現状です。<br>
-            
-            SIBLINKは、「きょうだい」が複雑さを生きながらも、存在を認められ、分かち合い、前に進める場所をつくりたいと考えています。
+            きょうだい児への支援はまだまだ整っていないのが現状です。<br>
+            <br>
+            siblinkは、「きょうだい」が複雑さを生きながらも、存在を認められ、分かち合い、前に進める場所をつくりたいと考えています。
           </p>
         </div>
 
@@ -232,10 +229,7 @@
   --------------------->
   <section id="interview" class="relative z-10 bg-white px-8 py-28 md:py-40 text-center">
     <div class="max-w-5xl mx-auto">
-      <p  class="fade-in text-4xl md:text-5xl font-medium text-gradient mb-8 leading-[4]">
-        Link Your Story
-      </p>
-      <h2 class="fade-in text-xl md:text-6xl font-bold text-[var(--text-primary)] mb-8 leading-[5]">
+      <h2 class="fade-in text-xl md:text-6xl font-bold text-gray-800 mb-8 leading-[5]">
         あなたの経験を<br>
         教えてください
       </h2>
@@ -245,7 +239,7 @@
 
       </p>
       <div class="fade-in">
-        <a href="#_" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">アンケートに答える
+        <a href="#_" class="inline-flex items-center justify-center w-full px-8 py-6 text-2xl font-medium leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">アンケートに答える
         </a>  
 </a>
       </div>
@@ -253,15 +247,15 @@
   </section>
 
   <!-- Footer -->
-  <footer id="footer" class="relative z-10 bg-zinc-100 px-12 py-20 flex items-center justify-between text-[var(--text-primary)]">
+  <footer id="footer" class="relative z-10 bg-zinc-100 px-12 py-20 flex items-center justify-between text-gray-800">
     <a href="#" class="no-underline">
-      <img src="/assets/images/header_logo.svg" alt="SIBLINK" style="height: 24px; width: auto;">
+      <img src="/assets/images/siblink.svg" alt="siblink" style="height: 32px; width: auto;">
     </a>
     <nav>
-      <ul class="flex gap-10 list-none p-0 m-0 text-sm font-normal tracking-[0.15em] no-underline">
+      <ul class="flex gap-10 list-none p-0 m-0 text-base font-normal  no-underline">
         <li><a href="#news" class="transition-opacity duration-200 hover:opacity-50">記事</a></li>
-        <li><a href="#about" class="transition-opacity duration-200 hover:opacity-50">SIBLINKについて</a></li>
-        <li><a href="#interview" class="transition-opacity duration-200 hover:opacity-50">声を投稿する</a></li>
+        <li><a href="#about" class="transition-opacity duration-200 hover:opacity-50">siblinkについて</a></li>
+        <li><a href="#interview" class="transition-opacity duration-200 hover:opacity-50">アンケートに答える</a></li>
         <li><a href="#" class="transition-opacity duration-200 hover:opacity-50">お問い合わせ</a></li>
       </ul>
     </nav>
